@@ -1,38 +1,53 @@
-<h1>EAT DA BURGER!</h1>
-
-<h2>Devoured it!</h2>
-
-<ul>
-  {{#each burgers}}
-    {{#unless devour}}
-      {{> burgers/burger-block devour=true}}
-    {{/unless}}
-  {{/each}}
-</ul>
-
-<h2>Devour it!</h2>
-
-<ul>
-  {{#each burgers}}
-    {{#if devour}}
-      {{> burgers/burger-block devour=false}}
-    {{/if}}
-  {{/each}}
-</ul>
-
-<h2>Add a burger</h2>
-<form class="create-form">
-
-  <div class="form-group">
-    <label for="ca">Burger Name:</label>
-    <input type="text" id="ca" name="name">
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 mx-auto mb-3 mt-3">
+      <img class="burger"src="assets/img/burger.png" />
+      <h1>EAT-DA-BURGER!</h1>
+    </div>
   </div>
 
-  <div class="form-group">
-    <label for="slee">Devoured?</label><br>
-    <input type="radio" name="devour" value="1" checked> Devour!<br>
-    <input type="radio" name="devour" value="0"> Devoured
+  
+ {{!-- Takes in the burger name input when the submit button is clicked --}}
+    <div class="row m-3">
+      <div class="col-md-6">
+        {{#each burgers}}
+        {{#unless devoured}}
+        <div class="input-group">
+          <li class="form-control">{{id}}: {{burger_name}}</li>
+          <span class="input-group-btn">
+            <button class="btn btn-dark devour-btn devour " data-id="{{id}} " type="submit" data-toggle="button" aria-pressed="false">Devour!</button>
+          </span>
+        </div>
+        {{/unless}}
+        {{/each}}
+      </div>
+      {{!-- When the devoured button is clicked, burgers populate here --}}
+      <div class="col-md-6">
+        {{#each burgers}}
+        {{#if devoured}}
+          <div class="input-group">
+            <li class="form-control">{{id}}: {{burger_name}}</li>
+            <span class="input-group-btn">
+              <button class="btn btn-danger delete" data-id="{{id}}" data-toggle="button" aria-pressed="false" type="submit"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+  <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+</svg></button>
+            </span>
+          </div>
+        {{/if}}
+        {{/each}}
+      </div>
+
+    </div>
+  
+  <div class="row">
+    <form class="create-form mx-auto">
+      <div class="form-group text-center">
+        <label for="burgerInput">Place your order!</label>
+        <input type="text" class="form-control" id="burgerInput">
+      </div>
+      <button type="submit" class="btn btn-dark mx-auto w-100" data-toggle="button" aria-pressed="false">Submit</button>
+    </form>
   </div>
 
-  <button type="submit">Add Burger</button>
-</form>
+</div>

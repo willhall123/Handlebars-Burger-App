@@ -12,14 +12,14 @@ var orm = {
     create: function(name, cb) {
         var queryString = "INSERT INTO burgers SET ?";
 
-        connection.query(queryString, { name: name, devoured: false }, function(err, res) {
+        connection.query(queryString, { burger_name: name, devoured: false }, function(err, res) {
             if (err) throw err;
             cb(res);
         });
     },
-    update: function(newID, cb) {
+    update: function(updatedID, cb) {
         var queryString = "UPDATE burgers SET ? WHERE ?";
-        connection.query(queryString, [{ devoured: true }, { id: newID }], function(err, res) {
+        connection.query(queryString, [{ devoured: true }, { id: updatedID }], function(err, res) {
             if (err) throw err;
             cb(res);
         });

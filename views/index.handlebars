@@ -1,13 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6 mx-auto mb-3 mt-3">
-      <img class="burger"src="/assets/img/burger.png" />
+      <img class="burger"src="/assets/img/sb-krabby-patty.jpg" />
       <h1>EAT-DA-BURGER!</h1>
     </div>
   </div>
 
-  
- {{!-- Takes in the burger name input when the submit button is clicked --}}
     <div class="row m-3">
       <div class="col-md-6">
         {{#each burgers}}
@@ -21,7 +19,7 @@
         {{/unless}}
         {{/each}}
       </div>
-      {{!-- When the devoured button is clicked, burgers populate here --}}
+
       <div class="col-md-6">
         {{#each burgers}}
         {{#if devoured}}
